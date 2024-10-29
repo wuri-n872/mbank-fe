@@ -1,0 +1,26 @@
+.button {
+    background-color: rgba(251, 251, 254, 255);
+    border: 2px solid rgba(240, 240, 251, 255);
+    border-radius: 20px;
+    padding: 20px;
+    color: rgba(0, 45, 137, 255);
+    font-size: 2rem;
+
+    box-shadow: 1px -1px 15px -4px rgba(76,85,133,0.1), 0 9px 15px 0px rgba(76,85,133,0.1);
+    -webkit-box-shadow: 1px -1px 15px -4px rgba(76,85,133,0.1), 0 9px 15px 0px rgba(76,85,133,0.1);
+    -moz-box-shadow: 1px -1px 15px -4px rgba(76,85,133,0.1), 0 9px 15px 0px rgba(76,85,133,0.1);
+
+    &-link {
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 1px -1px 15px -4px rgba(76,85,133,0.3), 0 9px 15px 0px rgba(76,85,133,0.3);
+        -webkit-box-shadow: 1px -1px 15px -4px rgba(76,85,133,0.3), 0 9px 15px 0px rgba(76,85,133,0.3);
+        -moz-box-shadow: 1px -1px 15px -4px rgba(76,85,133,0.3), 0 9px 15px 0px rgba(76,85,133,0.3);
+    }
+}
