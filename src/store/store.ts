@@ -5,6 +5,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import userReducer from 'store/features/userSlice'
 import routeReducer from 'store/features/routeSlice'
 import { authApi } from 'store/services/authApi'
+import { accountApi } from 'store/services/accountApi'
 // import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
@@ -12,12 +13,13 @@ export const store = configureStore({
     userState: persistReducer({ key: 'userState', storage }, userReducer),
     routeState: routeReducer,
     [authApi.reducerPath]: authApi.reducer,
+    [accountApi.reducerPath]: accountApi.reducer,
   }),
   devTools: process.env.NODE_ENV === 'development',
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat([authApi.middleware]),
+    }).concat([authApi.middleware, accountApi.middleware]),
 });
 
 export const persistor = persistStore(store);

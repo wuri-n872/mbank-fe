@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_BASE_URL } from 'app/constants';
-import { setUser, updateTokens } from 'store/features/userSlice';
+import { setUser } from 'store/features/userSlice';
 
 import { Credentials, User, UserTokens } from './types';
 
@@ -10,7 +10,7 @@ type UserWithTokens = User & UserTokens;
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${API_BASE_URL}/auth/`,
+    baseUrl: `${API_BASE_URL}`,
     headers: {
       'Accept': 'application/json',
     },
@@ -18,9 +18,9 @@ export const authApi = createApi({
   endpoints: builder => ({
     logIn: builder.mutation<UserWithTokens, Credentials>({
       query: credentials => ({
-        url: 'login',
+        url: '/login',
         method: 'POST',
-        body: { ...credentials, device_name: 'ReactJs App'},
+        body: credentials,
       }),
       onQueryStarted: async (_args, { dispatch, queryFulfilled }) => {
         try {
@@ -29,22 +29,7 @@ export const authApi = createApi({
         } catch (err) {}
       },
     }),
-    refresh: builder.mutation<UserTokens, string>({
-      query: refreshToken => ({
-        url: 'refresh',
-        body: { refreshToken },
-      }),
-      onQueryStarted: async (_args, { dispatch, queryFulfilled }) => {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch(updateTokens(data));
-        } catch (error) {}
-      },
-    }),
-    getMe: builder.query<User, void>({
-      query: () => 'me',
-    }),
   }),
 });
 
-export const { useLogInMutation, useRefreshMutation, useGetMeQuery } = authApi;
+export const { useLogInMutation } = authApi;

@@ -18,6 +18,7 @@ export type User = {
   id: number;
   email: string;
   name: string;
+  balance: number;
 };
 
 export type UserTokens = {

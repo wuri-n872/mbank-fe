@@ -15,10 +15,15 @@ export default function TransactionMenu({ user }: TransactionMenuProps) {
           <h2 style={{ margin: 0 }}>Welcome <strong>{user.name}</strong></h2>
         </div>
 
-        Current Balance
+        <div>
+          Current Balance
+          <div style={{ textAlign: 'left', fontSize: '2rem' }}>
+            <span>$</span><strong>{user.balance.toLocaleString('en-US')}</strong>
+          </div>
+        </div>
       </div>
       <Link to={'/withdraw'}>Withdraw</Link>
-      <Button>Deposit</Button>
+      <Link to={'/deposit'}>Deposit</Link>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import Router from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks'
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks'
 import withRestriction from './withRestriction'
 
 const DummyPageComponent = () => <div>Mocked Page</div>;
@@ -20,7 +20,7 @@ jest.mock("react-router-dom", () => {
 
 const mockedUseAppSelector = useAppSelector as jest.Mock;
 const mockedUseAppDispatch = useAppDispatch as jest.Mock;
-jest.mock("@/hooks/reduxHooks");
+jest.mock("hooks/reduxHooks");
 
 describe("withRestriction HOC", () => {
   const renderRestrictedPage = (path: string, redirect: string) => {

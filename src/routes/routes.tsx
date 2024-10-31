@@ -1,4 +1,5 @@
 import Layout from "components/Layout/Layout";
+import Deposit from "pages/Deposit/Deposit";
 import Home from "pages/Home";
 import Login from "pages/Login/Login";
 import Withdraw from "pages/Withdraw/Withdraw";
@@ -22,6 +23,10 @@ const routes = [
       {
         path: 'withdraw',
         Component: withRestriction(Withdraw),
+      },
+      {
+        path: 'deposit',
+        Component: withRestriction(Deposit),
       },
     ],
   },

@@ -22,14 +22,11 @@ export const userSlice = createSlice({
       state.isLoggedIn = true;
       state.user = action.payload;
     },
-    updateTokens: (state, action: PayloadAction<UserTokens>) => {
-      if (!state.user) {
-        throw new Error('Assigning tokens to empty user is not allowed!');
-      }
-      state.user = { ...state.user, ...action.payload };
+    updateBalance: (state, action: PayloadAction<number>) => {
+      state.user = { ...state.user!, balance: action.payload }
     },
   },
 });
 
-export const { setUser, updateTokens, logOut } = userSlice.actions;
+export const { setUser, updateBalance, logOut } = userSlice.actions;
 export default userSlice.reducer;
