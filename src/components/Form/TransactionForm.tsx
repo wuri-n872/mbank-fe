@@ -5,6 +5,7 @@ import * as yup from "yup"
 
 import InputControl from "components/Form/InputControl"
 import Button from "components/Button/Button"
+import { useNavigate } from "react-router-dom"
 
 export type TransactionAttrsType = {
   amount: number;
@@ -25,6 +26,7 @@ const defaultValues: { amount: number } = {
 }
 
 function TransactionForm({ onCommitTransaction, submitButton, isLoading = false }: TransactionFormProps) {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -43,9 +45,12 @@ function TransactionForm({ onCommitTransaction, submitButton, isLoading = false 
         </InputControl>
       </div>
 
-      <Button type="submit" disabled={isLoading} aria-disabled={isLoading} id="Transaction_submit">
-        {submitButton}
-      </Button>
+      <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+        <Button type="button" onClick={() => navigate(-1)}>&larr;</Button>
+        <Button type="submit" disabled={isLoading} aria-disabled={isLoading} id="Transaction_submit">
+          {submitButton}
+        </Button>
+      </div>
     </form>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { useWithdrawMutation } from 'store/services/accountApi';
 import { useAppSelector } from 'hooks/reduxHooks';

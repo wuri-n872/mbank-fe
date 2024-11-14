@@ -10,5 +10,5 @@ export function useRedirector(path: string, condition: boolean | ConditionClosur
         const redirecting = (typeof condition === 'boolean') ? condition : condition();
 
         redirecting && navigate(path);
-    }, [condition]);
+    }, [condition, navigate, path]);
 }

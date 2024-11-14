@@ -10,8 +10,6 @@ export type ProtectedPageProps  = object & {
   redirect?: string;
 }
 
-const loginRoute = '/login';
-
 function withRestriction<P extends ProtectedPageProps>(WrappedPageComponent: ComponentType<P>) {
   const ProtectedPageComponent = (props: P) => {
     const dispatch = useAppDispatch();
@@ -22,7 +20,9 @@ function withRestriction<P extends ProtectedPageProps>(WrappedPageComponent: Com
       !isLoggedIn && dispatch(setIntended(pathname));
     }, [isLoggedIn, dispatch, pathname]);
 
-    useRedirector(props.redirect || loginRoute, !isLoggedIn);
+    const { redirect } = props
+
+    useRedirector(redirect || '/', !isLoggedIn)
 
     return <WrappedPageComponent {...props} />
   }

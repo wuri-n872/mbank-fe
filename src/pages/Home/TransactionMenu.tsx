@@ -1,4 +1,3 @@
-import Button from 'components/Button/Button'
 import Link from 'components/Button/Link'
 import React from 'react'
 import { User } from 'store/services/types'
@@ -17,7 +16,7 @@ export default function TransactionMenu({ user }: TransactionMenuProps) {
 
         <div>
           Current Balance
-          <div style={{ textAlign: 'left', fontSize: '2rem' }}>
+          <div style={{ textAlign: 'left', fontSize: '2rem' }} data-testid="account-balance-info">
             <span>$</span><strong>{user.balance.toLocaleString('en-US')}</strong>
           </div>
         </div>
